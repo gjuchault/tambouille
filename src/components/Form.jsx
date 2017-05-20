@@ -10,7 +10,7 @@ import css from './Form.scss';
 const Form = ({ handleSubmit, submitting }) => {
   const required = val => (val ? undefined : 'Cette information est requise.');
 
-  const group = ['', 'MODEM', 'PS', 'LR'];
+  const group = ['', 'LR', 'LREM', 'MODEM', 'PS'];
 
   return (
     <form className={css.module} onSubmit={handleSubmit}>
@@ -55,12 +55,6 @@ const Form = ({ handleSubmit, submitting }) => {
         name="candidat_group"
         component={Select}
         options={group}
-        validate={required}
-      />
-      <Field
-        label="Fonction"
-        name="candidat_job"
-        component={Input}
         validate={required}
       />
       <button disabled={submitting} type="submit">{(submitting) ? 'En cours' : 'Ajouter'}</button>

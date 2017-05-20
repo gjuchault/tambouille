@@ -12,14 +12,32 @@ firebase.initializeApp({
 });
 const db = firebase.database();
 
-export default () => next => (action) => {
+export default ({ dispatch }) => next => (action) => {
   if (!action.method) {
     return next(action);
   }
 
+  dispatch({
+    type: `${action.type}_REQUEST`,
+  });
+
+  if (action.method === 'get') {
+    return db.ref().once('value').then((snap) => {
+      dispatch({
+        type: `${action.type}_SUCCESS`,
+        payload: snap.val(),
+      });
+    });
+  }
+
   if (action.method === 'set') {
     const id = uuid.v4();
-    return db.ref(id).set({ ...action.payload, id });
+    return db.ref(id).set({ ...action.payload, id }).then(() => {
+      dispatch({
+        type: `${action.type}_SUCCESS`,
+        payload: { ...action.payload, id },
+      });
+    });
   }
 
   return false;

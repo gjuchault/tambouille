@@ -1,0 +1,19 @@
+.module {
+  border-collapse: collapse;
+  margin: auto;
+  max-width: 900px;
+  text-align: center;
+  width: 100%;
+
+  th {
+    border: 1px solid #ddd;
+    color: #23b9d0;
+    padding: 10px;
+  }
+
+  tbody tr:nth-child(odd) {background: transparentize(#23b9d0, .9);}
+
+  td {
+    padding: 10px;
+  }
+}
