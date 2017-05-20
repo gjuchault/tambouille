@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,600');
+
+:global {
+  .browserupgrade {
+    background: darkorange;
+    color: #fff;
+    padding: 10px 20px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 99999999;
+
+    a {
+      color: darkmagenta;
+      text-decoration: underline;
+    }
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus {outline: 0;}
+
+body {
+  font-family: Roboto, sans-serif;
+  color: #777;
+}
+
+h1,
+h2,
+h3,
+p {margin: 0;}
+
+h1,
+h2 {
+  font-family: Montserrat, sans-serif;
+}
+
+h1 {
+  background: #c9462c;
+  border-bottom: 1px solid #bc4229;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+
+h2 {
+  color: #23b9d0;
+  font-size: 22px;
+  margin: 30px 0 10px;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {text-decoration: underline;}
+}
+
+fieldset {
+  border: 0;
+  display: inline-block;
+
+  &:global(.error) {
+    input,
+    select {border: 1px solid #c9462c;}
+  }
+}
+
+label {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button {cursor: pointer;}

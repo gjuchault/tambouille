@@ -1,0 +1,21 @@
+.module {
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  margin: 40px auto;
+  padding: 5px 40px;
+  width: 900px;
+
+  button {
+    background: #23b9d0;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-weight: 600;
+    margin: 40px auto;
+    padding: 8px 0;
+    width: 180px;
+
+    &:disabled {background: #aaa;}
+  }
+}
