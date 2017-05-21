@@ -10,6 +10,10 @@ const byId = (state = {}, action) => {
       return { ...state,
         [action.payload.id]: { ...action.payload },
       };
+    case 'REMOVE_SUCCESS': {
+      const { [action.payload]: removed, ...newState } = state;
+      return newState;
+    }
     default:
       return state;
   }
@@ -21,6 +25,8 @@ const allIds = (state = [], action) => {
       return Object.keys(action.payload);
     case 'ADD_SUCCESS':
       return [...state, action.payload.id];
+    case 'REMOVE_SUCCESS':
+      return state.filter(id => id !== action.payload);
     default:
       return state;
   }

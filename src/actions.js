@@ -8,3 +8,9 @@ export const add = data => ({
   method: 'set',
   payload: data,
 });
+
+export const remove = id => ({
+  type: 'REMOVE',
+  method: 'remove',
+  payload: id,
+});

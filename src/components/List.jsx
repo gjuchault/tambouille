@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import ListItem from '../containers/ListItem';
 import css from './List.scss';
 
 const List = ({ items }) => (
@@ -10,6 +11,7 @@ const List = ({ items }) => (
         <th colSpan="2">Département</th>
         <th rowSpan="2">Circo</th>
         <th colSpan="3">Candidat.e désigné.e</th>
+        <th rowSpan="2">Actions</th>
       </tr>
       <tr>
         <th>Num</th>
@@ -20,16 +22,7 @@ const List = ({ items }) => (
       </tr>
     </thead>
     <tbody>
-      {items.map(item => (
-        <tr key={item.id}>
-          <td>{item.dep_num}</td>
-          <td>{item.dep_name}</td>
-          <td>{item.circo}</td>
-          <td>{item.candidat_name}</td>
-          <td>{item.candidat_gender}</td>
-          <td>{item.candidat_group}</td>
-        </tr>
-      ))}
+      {items.map(item => <ListItem key={item.id} item={item} />)}
     </tbody>
   </table>
 );

@@ -40,5 +40,14 @@ export default ({ dispatch }) => next => (action) => {
     });
   }
 
+  if (action.method === 'remove') {
+    return db.ref(action.payload).remove().then(() => {
+      dispatch({
+        type: `${action.type}_SUCCESS`,
+        payload: action.payload,
+      });
+    });
+  }
+
   return false;
 };
