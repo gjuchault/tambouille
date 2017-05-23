@@ -4,13 +4,19 @@ import { Field, reduxForm } from 'redux-form';
 
 import Input from './Input';
 import Select from './Select';
+import Textarea from './Textarea';
 
 import css from './Form.scss';
 
 const Form = ({ handleSubmit, submitting }) => {
   const required = val => (val ? undefined : 'Cette information est requise.');
+  const url = value => (
+    value && !/^(https?:\/\/)([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i.test(value)
+    ? 'Invalid email address'
+    : undefined);
 
-  const group = ['', 'LR', 'LREM', 'MODEM', 'PS'];
+  const group = ['', 'LR', 'UDI', 'LREM', 'MODEM', 'PS', 'EELV'];
+  const categories = ['', 1, 2, 3, 4, 5, 6, 7];
 
   return (
     <form className={css.module} onSubmit={handleSubmit}>
@@ -28,9 +34,8 @@ const Form = ({ handleSubmit, submitting }) => {
         component={Input}
         validate={required}
       />
-      <h2>Circonsciption</h2>
       <Field
-        label="N°"
+        label="Circonsciption"
         name="circo"
         component={Input}
         type="number"
@@ -44,17 +49,30 @@ const Form = ({ handleSubmit, submitting }) => {
         validate={required}
       />
       <Field
-        label="Genre"
-        name="candidat_gender"
-        component={Select}
-        options={['', 'H', 'F']}
-        validate={required}
-      />
-      <Field
         label="Groupe"
         name="candidat_group"
         component={Select}
         options={group}
+        validate={required}
+      />
+      <h2>Tambouille</h2>
+      <Field
+        label="Catégorie"
+        name="category"
+        component={Select}
+        options={categories}
+        validate={required}
+      />
+      <Field
+        label="Source"
+        name="source"
+        component={Input}
+        validate={url}
+      />
+      <Field
+        label="Description"
+        name="description"
+        component={Textarea}
         validate={required}
       />
       <button disabled={submitting} type="submit">{(submitting) ? 'En cours' : 'Ajouter'}</button>

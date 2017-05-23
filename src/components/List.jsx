@@ -8,17 +8,20 @@ const List = ({ items }) => (
   <table className={css.module}>
     <thead>
       <tr>
-        <th colSpan="2">Département</th>
-        <th rowSpan="2">Circo</th>
-        <th colSpan="3">Candidat.e désigné.e</th>
+        <th colSpan="3">Département</th>
+        <th colSpan="2">Candidat.e désigné.e</th>
+        <th colSpan="3">Tambouille</th>
         <th rowSpan="2">Actions</th>
       </tr>
       <tr>
         <th>Num</th>
         <th>Libellé</th>
+        <th>Circon</th>
         <th>Nom</th>
-        <th>Genre</th>
         <th>Groupe</th>
+        <th>Cat</th>
+        <th>Source</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>

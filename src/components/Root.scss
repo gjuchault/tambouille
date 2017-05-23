@@ -16,6 +16,19 @@
       text-decoration: underline;
     }
   }
+
+  .Textarea {
+    width: 100%;
+
+    textarea {
+      border-color: #ccc;
+      display: block;
+      height: 10em;
+      margin: 10px 0;
+      resize: vertical;
+      width: 100%;
+    }
+  }
 }
 
 *,
@@ -71,6 +84,7 @@ fieldset {
 
   &:global(.error) {
     input,
+    textarea,
     select {border: 1px solid #c9462c;}
   }
 }

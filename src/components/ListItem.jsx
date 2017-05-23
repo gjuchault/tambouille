@@ -7,8 +7,10 @@ const ListItem = ({ item, remove }) => (
     <td>{item.dep_name}</td>
     <td>{item.circo}</td>
     <td>{item.candidat_name}</td>
-    <td>{item.candidat_gender}</td>
     <td>{item.candidat_group}</td>
+    <td>{item.category}</td>
+    <td>{item.source}</td>
+    <td>{item.description}</td>
     <td>
       <button onClick={remove}>Supprimer</button>
     </td>
