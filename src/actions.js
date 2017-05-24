@@ -5,7 +5,13 @@ export const get = () => ({
 
 export const add = data => ({
   type: 'ADD',
-  method: 'set',
+  method: 'add',
+  payload: data,
+});
+
+export const update = data => ({
+  type: 'UPDATE',
+  method: 'update',
   payload: data,
 });
 

@@ -8,7 +8,7 @@ import Textarea from './Textarea';
 
 import css from './Form.scss';
 
-const Form = ({ handleSubmit, submitting }) => {
+const Form = ({ edit, handleSubmit, submitting }) => {
   const required = val => (val ? undefined : 'Cette information est requise.');
   const url = value => (
     value && !/^(https?:\/\/)([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i.test(value)
@@ -16,7 +16,14 @@ const Form = ({ handleSubmit, submitting }) => {
     : undefined);
 
   const group = ['', 'LR', 'UDI', 'LREM', 'MODEM', 'PS', 'EELV'];
-  const categories = ['', 1, 2, 3, 4, 5, 6, 7];
+  const categories = ['', '1', '2', '3', '4', '5', '6', '7'];
+
+  let buttonLabel = 'Ajouter';
+  if (submitting) {
+    buttonLabel = 'En cours';
+  } else if (edit) {
+    buttonLabel = 'Éditer';
+  }
 
   return (
     <form className={css.module} onSubmit={handleSubmit}>
@@ -67,7 +74,7 @@ const Form = ({ handleSubmit, submitting }) => {
         label="Source"
         name="source"
         component={Input}
-        validate={url}
+        validate={[required, url]}
       />
       <Field
         label="Description"
@@ -75,12 +82,17 @@ const Form = ({ handleSubmit, submitting }) => {
         component={Textarea}
         validate={required}
       />
-      <button disabled={submitting} type="submit">{(submitting) ? 'En cours' : 'Ajouter'}</button>
+      <button disabled={submitting} type="submit">{buttonLabel}</button>
     </form>
   );
 };
 
+Form.defaultProps = {
+  edit: false,
+};
+
 Form.propTypes = {
+  edit: PropTypes.bool,
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };

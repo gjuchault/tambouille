@@ -44,6 +44,7 @@
 body {
   font-family: Roboto, sans-serif;
   color: #777;
+  margin-bottom: 80px;
 }
 
 h1,
@@ -60,10 +61,15 @@ h1 {
   background: #c9462c;
   border-bottom: 1px solid #bc4229;
   box-shadow: 0 2px 4px rgba(0,0,0,.2);
-  color: #fff;
   padding: 10px;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.4);
+
+  a {
+    color: #fff;
+
+    &:hover {text-decoration: none;}
+  }
 }
 
 h2 {

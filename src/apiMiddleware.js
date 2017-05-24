@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import uuid from 'uuid';
 
+import { reset } from 'redux-form';
+
 firebase.initializeApp({
   apiKey: 'AIzaSyCL1QCLlTfJVlfnILETo2HZ5Hv8YEo3Aqg',
   authDomain: 'tambouille-af68c.firebaseapp.com',
@@ -19,6 +21,7 @@ export default ({ dispatch }) => next => (action) => {
 
   dispatch({
     type: `${action.type}_REQUEST`,
+    payload: action.payload,
   });
 
   if (action.method === 'get') {
@@ -30,8 +33,19 @@ export default ({ dispatch }) => next => (action) => {
     });
   }
 
-  if (action.method === 'set') {
+  if (action.method === 'add') {
     const id = uuid.v4();
+    return db.ref(id).set({ ...action.payload, id }).then(() => {
+      dispatch({
+        type: `${action.type}_SUCCESS`,
+        payload: { ...action.payload, id },
+      });
+      dispatch(reset('form'));
+    });
+  }
+
+  if (action.method === 'update') {
+    const id = action.payload.id;
     return db.ref(id).set({ ...action.payload, id }).then(() => {
       dispatch({
         type: `${action.type}_SUCCESS`,
