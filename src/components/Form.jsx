@@ -15,7 +15,7 @@ const Form = ({ edit, handleSubmit, submitting }) => {
     ? 'Invalid email address'
     : undefined);
 
-  const group = ['', 'LR', 'UDI', 'LREM', 'MODEM', 'PS', 'EELV'];
+  const group = ['', 'LR', 'UDI', 'LREM', 'MODEM', 'PS', 'PRG', 'EELV'];
   const categories = ['', '1', '2', '3', '4', '5', '6', '7'];
 
   let buttonLabel = 'Ajouter';
