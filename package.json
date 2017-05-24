@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "tambouille-admin",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --hot --history-api-fallback --open",
