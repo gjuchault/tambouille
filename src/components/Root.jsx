@@ -7,8 +7,10 @@ import './Root.scss';
 import Home from '../containers/Home';
 import Item from '../containers/Item';
 
+import config from '../../config';
+
 const Root = () => (
-  <Router>
+  <Router basename={config[process.env.NODE_ENV].basename}>
     <div>
       <h1><Link to="/">Tambouille</Link></h1>
 
