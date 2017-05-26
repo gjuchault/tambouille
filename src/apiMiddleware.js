@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import 'firebase/auth';
 import 'firebase/database';
 import uuid from 'uuid';
 
@@ -9,9 +10,9 @@ firebase.initializeApp({
   authDomain: 'tambouille-af68c.firebaseapp.com',
   databaseURL: 'https://tambouille-af68c.firebaseio.com',
   projectId: 'tambouille-af68c',
-  storageBucket: 'tambouille-af68c.appspot.com',
-  messagingSenderId: '626971325552',
 });
+firebase.auth().signInWithEmailAndPassword('snahedis@gmail.com', 'tambouillepass');
+
 const db = firebase.database();
 
 export default ({ dispatch }) => next => (action) => {
